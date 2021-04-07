@@ -1,36 +1,43 @@
-import React from "react";
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Router} from "./components/Router";
 
-import {Done} from "./done/Done"
-import {Todo} from "./todo/Todo"
+import "./App.css"
+
+import {db} from "./firebase";
 
 export interface AppProps {
+}
 
+async function getCollection(collectionName: string) {
+    let todos: any;
+    let snapshot = await db.collection(collectionName).get();
+
+    todos = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+    }))
+    return todos;
 }
 
 export const App = (props: AppProps) => {
-    return (
-        <Router>
-            <div className="container">
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/Done">Done</Link>
-                        </li>
-                        <li>
-                            <Link to="/Todo">To do</Link>
-                        </li>
-                    </ul>
-                </nav>
+    let [todos, setTodos]: any = useState([]);
+    let [done, setDone]: any = useState([]);
 
-                <Switch>
-                    <Route path="/Done">
-                        <Done/>
-                    </Route>
-                    <Route path="/Todo">
-                    </Route>
-                </Switch>
-            </div>
-        </Router>
+    useEffect(() => {
+        getCollection("todos").then(todos => {
+            setTodos(todos);
+        });
+
+        getCollection("done").then(done => {
+            setDone(done);
+        });
+    }, [])
+
+    return (
+        <Router
+            done={done}
+            todos={todos}
+        />
     )
+
 }
