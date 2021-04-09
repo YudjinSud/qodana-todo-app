@@ -5,6 +5,7 @@ import "./App.css"
 
 import {_addEntry, _deleteEntry, _getCollection} from "./api/Api";
 import {IEntry} from "./components/entry/Entry";
+import {BarChart} from "./components/chart/BarChart";
 
 export interface AppProps {
 }
@@ -50,7 +51,7 @@ export const App = (props: AppProps) => {
         });
     }, [])
 
-    return (
+    return <>
         <Router
             addEntry={addEntry}
             deleteEntry={deleteEntry}
@@ -58,5 +59,6 @@ export const App = (props: AppProps) => {
             done={done}
             todos={todos}
         />
-    )
+        <BarChart data={done}/>
+    </>
 }

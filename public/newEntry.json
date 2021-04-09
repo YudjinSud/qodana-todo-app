@@ -1,0 +1,8 @@
+{
+  "id": "Json entry",
+  "title": "Json entry",
+  "comment" : "Comment from json entry",
+  "done" : "false",
+  "tags": ["json", "dev", "TypeScript"],
+  "date": ""
+}

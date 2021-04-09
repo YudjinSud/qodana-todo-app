@@ -103,7 +103,7 @@ export function NewEntry(props: INewEntry) {
                            onChange={parseJson}/>
                 </div>
                 <div className="d-flex flex-column">
-                    <button type="submit" className="btn btn-outline-primary add-button">Add</button>
+                    <button disabled={!title.length} type="submit" className="btn btn-outline-primary add-button">Add</button>
                 </div>
             </form>
         </div>
