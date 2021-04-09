@@ -8,7 +8,7 @@ https://qodana-todo-app.web.app/Todo
 * Two lists : with done and pending tasks
 * Simple bar chart on HTML5 canvas which classifies done tasks by their tags
 
-The file structure is as follows
+The json file structure is as follows
 
 ```
 {
