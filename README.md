@@ -1,6 +1,6 @@
 # Simple todo app on React.js + firebase
 
-https://qodana-todo-app.web.app/Todo
+https://qodana-todo-app.web.app/Done
 
 * User can create tasks, delete them, and mark as done
 * App can read data from .json file
