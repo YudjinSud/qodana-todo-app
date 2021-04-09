@@ -27,7 +27,7 @@ export const Router = (props: IRouterProps) => {
                         </Link>
                     </div>
                     <div className="p-4">
-                        <Link to="/Todos">
+                        <Link to="/Todo">
                             <p>To do</p>
                         </Link>
                     </div>
@@ -40,7 +40,7 @@ export const Router = (props: IRouterProps) => {
                                    deleteEntry={props.deleteEntry}
                                    changeCollection={props.changeCollection}/>
                     </Route>
-                    <Route path="/Todos">
+                    <Route path="/Todo">
                         <EntryList entryList={props.todos}
                                    deleteEntry={props.deleteEntry}
                                    changeCollection={props.changeCollection}/>

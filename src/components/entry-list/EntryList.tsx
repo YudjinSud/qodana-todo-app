@@ -32,7 +32,7 @@ export function EntryList(props: IEntryListProps) {
     })
     return (
         <div className="container col-12 col-sm-12 col-md-8 col-lg-6 col-xl-3">
-            <div className="list-group">{list}</div>
+            <div className="">{list}</div>
         </div>
     )
 }

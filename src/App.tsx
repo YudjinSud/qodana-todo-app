@@ -12,38 +12,36 @@ export interface AppProps {
 
 export const App = (props: AppProps) => {
 
-    function updateCollection(collection: string) {
+    async function updateCollection(collection: string) {
         _getCollection(collection)
             .then(list => {
-                collection === "todos"
+                collection === "todo"
                     ? setTodos(list)
                     : setDone(list);
             })
     }
 
-    function addEntry(entry: IEntry, collection: string) {
+    async function addEntry(entry: IEntry, collection: string) {
         _addEntry(entry, collection)
             .then(() => updateCollection(collection));
     }
 
-    function deleteEntry(entry: IEntry, collection: string) {
+    async function deleteEntry(entry: IEntry, collection: string) {
         _deleteEntry(entry, collection)
             .then(() => updateCollection(collection));
     }
 
     function changeCollection(entry: IEntry, from :string, to : string) {
         entry.done = !entry.done;
-        _deleteEntry(entry, from)
-            .then(() => updateCollection(from))
+        deleteEntry(entry, from)
             .then(() => addEntry(entry, to))
-            .then(() => updateCollection(to));
     }
 
     let [todos, setTodos]: any = useState([]);
     let [done, setDone]: any = useState([]);
 
     useEffect(() => {
-        _getCollection("todos").then(todos => {
+        _getCollection("todo").then(todos => {
             setTodos(todos);
         });
 
@@ -60,7 +58,5 @@ export const App = (props: AppProps) => {
             done={done}
             todos={todos}
         />
-
     )
-
 }
